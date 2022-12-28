@@ -1,0 +1,12 @@
+Machine Learning: 
+
+Field of study that gives computers the ability to learn without being explicitly programmed 
+
+Supervised 
+-- Feeding data labeled as Given input x results in output y
+ -- classical ( labeled data )
+ -- regression (predict a number)
+ 
+Unsupervised
+-- Disocver new patterns using deep learning 
+-- example given news everyday create models to synthesize the news articles and identify hidden patterns
