@@ -3,10 +3,26 @@ Machine Learning:
 Field of study that gives computers the ability to learn without being explicitly programmed 
 
 Supervised 
--- Feeding data labeled as Given input x results in output y
- -- classical ( labeled data )
- -- regression (predict a number)
+-- Feeding data labeled as Given input x results in output y our algorithm learns the relation
+-- predicts results based on large data fed into the algorithm.
+-- learn based on right answers
+
+ -- classical ( labeled data (any categories) is analyzed and the algorithm learns to predict categories based on input)
+ -- regression (predict a specific number based on data like house prices)
+ 
+ -- example : spam filtering (provide algorithm emails labeled as spam or not)
+            : speech recognition (given audio provide a transcript)
+            : online advertising
+            : machine translation
+            : visual inspection
+            
+  
  
 Unsupervised
--- Disocver new patterns using deep learning 
--- example given news everyday create models to synthesize the news articles and identify hidden patterns
+-- Discover new patterns using deep learning 
+-- example google news - given news articles everyday create models to synthesize the news articles and identify hidden patterns
+-- clustering (group similar data together) creating categories based on interesting relations.
+-- anomaly detection : find unusual data points (fraud detection)
+-- dimensionality reduction : compress data using fewer numbers
+
+
