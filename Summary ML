@@ -25,4 +25,14 @@ Unsupervised
 -- anomaly detection : find unusual data points (fraud detection)
 -- dimensionality reduction : compress data using fewer numbers
 
+Linear Regression: 
 
+— f(x) = ax + b 
+— The linear relationship between two variables can be drawn as a straight line graph and the gradient of the line calculates the rate of change between the two variables.
+
+
+Regression models using cost function 
+
+Gradient discent algorithm : used in deep learning model (advance neural network)
+-- its basically an algorithm that helps minimize the function.
+-- recalibrates the values such that the desired outcome or less errors are achieved
