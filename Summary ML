@@ -36,3 +36,7 @@ Regression models using cost function
 Gradient discent algorithm : used in deep learning model (advance neural network)
 -- its basically an algorithm that helps minimize the function.
 -- recalibrates the values such that the desired outcome or less errors are achieved
+
+
+Multiple features (Multiple regression model) : 
+-- when there are multiple features on a given dataset this model can provide accurate predictions using vectorization
