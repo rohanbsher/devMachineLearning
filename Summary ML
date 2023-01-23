@@ -40,3 +40,6 @@ Gradient discent algorithm : used in deep learning model (advance neural network
 
 Multiple features (Multiple regression model) : 
 -- when there are multiple features on a given dataset this model can provide accurate predictions using vectorization
+
+
+Logistic Regression
