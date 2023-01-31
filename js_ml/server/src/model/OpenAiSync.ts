@@ -1,13 +1,12 @@
 import { OpenAIApi, Configuration } from 'openai';
-import { AxiosResponse } from 'axios';
 
 export class OpenAiSync {
 	constructor(private openai?: OpenAIApi) {
 	}
 
-	// set initializeModel(configuration: Configuration) {
-	// 	this.openai = new OpenAIApi(configuration);
-	// }
+	static buildOpenAiSync(configuration: Configuration): OpenAIApi {
+		return new OpenAIApi(configuration);
+	}
 
 	public async listEngines() {
 		if (this.openai !== undefined) {
@@ -15,4 +14,18 @@ export class OpenAiSync {
 			return response;
 		}
 	}
+
+	public async createCompletion(prompt: string, temperature: number) {
+		if (this.openai !== undefined) {
+			const response = await this.openai.createCompletion({
+				model: 'text-davinci-003',
+				prompt: prompt,
+				temperature: temperature,
+			});
+			return response;
+		} else {
+			console.log('OpenAI is undefined');
+		}
+	}
+
 }

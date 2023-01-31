@@ -5,7 +5,6 @@ const express_1 = require("express");
 const router = (0, express_1.Router)();
 exports.router = router;
 router.get('/', (req, res) => {
-    // res.send('Hello World');
     res.sendFile('./view/index.html', { root: __dirname });
 });
 router.post('/ask', (req, res) => {
