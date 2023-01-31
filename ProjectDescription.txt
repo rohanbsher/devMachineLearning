@@ -1,0 +1,1 @@
+To develop a backend utilizing node js and typescript and 

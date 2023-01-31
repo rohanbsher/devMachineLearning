@@ -1,0 +1,35 @@
+#searchbar {
+	width: 50%;
+	margin: 20px auto;
+	text-align: center;
+  }
+  
+  input[type="search"] {
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	width: 80%;
+  }
+  
+  button[type="submit"] {
+	background-color: blue;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	cursor: pointer;
+  }
+  
+  form {
+	width: 50%;
+	margin: 20px auto;
+	text-align: center;
+  }
+  
+  body {
+	text-align: center;
+	font-family: Arial, sans-serif;
+  }
+  
