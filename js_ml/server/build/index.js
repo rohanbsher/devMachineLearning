@@ -44,7 +44,7 @@ const configuration = new openai_1.Configuration({
 });
 const user = OpenAiSync_1.OpenAiSync.buildOpenAiSync(configuration);
 const userSync = new OpenAiSync_1.OpenAiSync(user);
-let questionVal = 'What is the meaning of science? Return the answer as a string.';
+let questionVal = 'What is the historical low copper price? Return the answer as a string.';
 userSync.createCompletion(questionVal, 0.9).then((response) => {
     console.log("Your question is : " + questionVal);
     if (response) {
@@ -52,11 +52,27 @@ userSync.createCompletion(questionVal, 0.9).then((response) => {
         console.log("Response is : " + parseJson);
     }
 });
+let engineData;
 userSync.listEngines().then((response) => {
     if (response) {
-        // console.log(response.data);
+        engineData = response.data;
+        console.log(engineData.data[0]);
     }
 });
+// async function listEngines(): Promise<void> {
+// 	try {
+// 	  const response = await userSync.listEngines();
+// 	  if (response) {
+// 		console.log(response.data);
+// 		const engines = response.data as { object: string, id: string, ready: boolean, owner: string, permissions: any, created: any }[];
+// 		engines.forEach(engine => {
+// 		  console.log(`Engine object: ${engine.object}, ID: ${engine.id}, ready: ${engine.ready}, owner: ${engine.owner}, permissions: ${engine.permissions}, created: ${engine.created}`);
+// 		});
+// 	  }
+// 	} catch (error) {
+// 	  console.error(error);
+// 	}
+//   }
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 });

@@ -14,6 +14,7 @@ router.post('/ask', (req: RequestWithBody, res: Response) => {
 	res.send(`
 			<div>
 				<div>You're question is: ${question} </div>
+				<p> Check asnwer in the command prompt for now</p>
 				<a href="/">Ask another question</a>
 			</div>
 		`);
