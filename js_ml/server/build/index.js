@@ -28,37 +28,64 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const basicRoutes_1 = require("./routes/basicRoutes");
 const openai_1 = require("openai");
 const OpenAiSync_1 = require("./model/OpenAiSync");
 const dotenv = __importStar(require("dotenv"));
 const path_1 = __importDefault(require("path"));
+const cors_1 = __importDefault(require("cors"));
 dotenv.config({ path: path_1.default.resolve(__dirname, "../../../.env") });
 const app = (0, express_1.default)();
 app.use(body_parser_1.default.urlencoded({ extended: true }));
-app.use(basicRoutes_1.router);
+// app.use(router);
 app.use(express_1.default.static('public'));
+app.use((0, cors_1.default)());
 const configuration = new openai_1.Configuration({
     organization: "org-lDiIEYdILCOI44vMsWyYnOLQ",
     apiKey: process.env.OPENAI_API_KEY
 });
 const user = OpenAiSync_1.OpenAiSync.buildOpenAiSync(configuration);
 const userSync = new OpenAiSync_1.OpenAiSync(user);
-let questionVal = 'What is the historical low copper price? Return the answer as a string.';
-userSync.createCompletion(questionVal, 0.9).then((response) => {
-    console.log("Your question is : " + questionVal);
-    if (response) {
-        const parseJson = response.data.choices[0].text;
-        console.log("Response is : " + parseJson);
-    }
+let questionVal = 'What is the historical low iron price? Return the answer as a string.';
+let resVal = "";
+// userSync.createCompletion(questionVal, 0.9).then((response) => {
+// 	console.log("Your question is : " + questionVal);
+// 	if(response){
+// 		const parseJson = response.data.choices[0].text?.trim();
+// 		resVal = parseJson!;
+// 		console.log("Response is : " + parseJson);
+// 	}
+// });
+app.post('/ask', async (req, res) => {
+    // Get the user's input question from the query parameter
+    userSync.createCompletion(questionVal, 0.9).then((response) => {
+        var _a;
+        console.log("Your question is : " + questionVal);
+        if (response) {
+            const parseJson = (_a = response.data.choices[0].text) === null || _a === void 0 ? void 0 : _a.trim();
+            resVal = parseJson;
+            console.log("Response is : " + parseJson);
+        }
+    });
+    res.send(resVal);
 });
-let engineData;
-userSync.listEngines().then((response) => {
-    if (response) {
-        engineData = response.data;
-        console.log(engineData.data[0]);
-    }
+app.get('/ask', (req, res) => {
+    res.send(resVal);
 });
+// interface Engine {
+// 	data: any;
+// 	id: string;
+// 	object: string;
+// 	ready: boolean;
+// 	owner: string;
+// 	permissions: any;
+// }
+// let engineData: Engine;
+// userSync.listEngines().then((response) => {
+// 	if(response){
+// 		engineData = response.data;
+// 		console.log(engineData.data[0] as Engine);
+// 	}
+// });
 // async function listEngines(): Promise<void> {
 // 	try {
 // 	  const response = await userSync.listEngines();
@@ -73,6 +100,6 @@ userSync.listEngines().then((response) => {
 // 	  console.error(error);
 // 	}
 //   }
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
+app.listen(3001, () => {
+    console.log('Server started on port 3001');
 });
